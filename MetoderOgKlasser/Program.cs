@@ -1,15 +1,23 @@
 ﻿using MetoderOgKlasser;
-class program
+class Program
 {
-    static void Main()
+    static void Main(string[] args)
     {
-        Bog test = new Bog { BogId = 1, Titel = "Skyggeriget", Forfatter = "KIM FABER & JANNI PEDERSEN", IsbnNummer = "9788740074918", AntalSider = 416, AntalBoger = 1};
-        Console.WriteLine(Boghandler.Sælg(test));
-        Console.WriteLine(test.AntalBoger);
-
-        Kunder kd1 = new Kunder { Navn = "Thomas", Addresse = "Bronx" };
-        Console.WriteLine(kd1);
-
-        Console.WriteLine(Validation.ValidationDouble("Skriv et tal: ")); 
+        Forlag.BogList = new List<Bog>();
+        Bog minBog = new Bog { Titel = "bog1", Forfatter = "Ham", IsbnNummer = "1234", AntalSider = 60, AntalBoger = 1};
+        Bog bogen = new Bog { Titel = "bog2", Forfatter = "Hende", IsbnNummer = "1234", AntalSider = 70, AntalBoger = 1};
+        Forlag.Modtage(ref minBog);
+        Forlag.Modtage(ref bogen);
+        foreach (var item in Forlag.BogList)
+        {
+            Console.WriteLine(item.BogId);
+            Console.WriteLine(item.Titel);
+            Console.WriteLine(item.Forfatter);
+            Console.WriteLine(item.IsbnNummer);
+            Console.WriteLine(item.AntalSider);
+            Console.WriteLine(item.AntalBoger);
+            
+        }
+        
     }
-} 
+}
